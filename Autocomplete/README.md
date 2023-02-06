@@ -6,6 +6,7 @@ Developed with Vue 3 in Vite.
 ## Project Setup
 
 ```sh
+cd Autocomplete
 npm install
 ```
 
