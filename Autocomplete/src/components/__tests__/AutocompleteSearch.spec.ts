@@ -8,10 +8,10 @@ describe("Cities Autocomplete", () => {
     const wrapper = mount(AutocompleteSearch, {
       attachTo: document.body,
     });
-    // const entityName = Object.keys(wrapper.vm.props.entity)[0];
-    // expect(wrapper.text()).toContain(
-    //   `Type the name of a ${entityName} to search`
-    // );
+
+    expect(wrapper.text()).toContain(
+      `Type the name of a ${wrapper.vm.entityName} to search`
+    );
     const input = wrapper.find("input").element;
     expect(input).toBe(document.activeElement);
   });
