@@ -19,7 +19,11 @@ const entites: [{ city: string[] }, { book: Book[] }] = [
       v-bind:key="entity.key"
       class="bg-gray-50min-w-screen min-h-screen flex justify-center items-center"
     >
-      <AutocompleteSearch :entity="entity" />
+      <AutocompleteSearch
+        v-if="entity"
+        :entity="Object.values(entity).flat(1)"
+        :entityName="Object.keys(entity)[0]"
+      />
     </div>
   </div>
 </template>

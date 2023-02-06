@@ -4,8 +4,8 @@ import { Book } from "./models/book.model";
 
 const props = defineProps<{
   entity: (string | Book)[];
+  entityName: string;
 }>();
-let entityName = ref(Object.keys(props.entity)[0]);
 
 let searchTerm = ref("");
 let search = ref(null);
@@ -13,7 +13,7 @@ let notFound = false;
 
 onMounted(() => {
   // When the page loads the search field should the first search input selected automatically
-  if (entityName.value !== "book") {
+  if (props.entityName !== "book") {
     search.value?.focus();
   }
 });
@@ -33,8 +33,7 @@ let searchEntity = computed({
     } else {
       notFound = false;
 
-      const entityList = Object.values(props.entity).flat(1);
-      let cities = entityList.filter((entity: string | Book) => {
+      let entities = props.entity.filter((entity: string | Book) => {
         if (
           entity.title &&
           searchTerm.value.length >= 3 &&
@@ -53,15 +52,15 @@ let searchEntity = computed({
       if (
         searchTerm.value !== "" &&
         searchTerm.value.length >= 3 &&
-        cities[0] !== searchTerm.value
+        entities[0] !== searchTerm.value
       ) {
         notFound = true;
       }
-      return cities;
+      return entities;
     }
   },
-  set: (cities) => {
-    return cities;
+  set: (entities) => {
+    return entities;
   },
 });
 

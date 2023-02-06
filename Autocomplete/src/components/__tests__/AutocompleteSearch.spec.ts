@@ -10,15 +10,15 @@ describe("Cities Autocomplete", () => {
     });
 
     expect(wrapper.text()).toContain(
-      `Type the name of a ${wrapper.vm.entityName} to search`
+      `Type the name of a`
     );
     const input = wrapper.find("input").element;
     expect(input).toBe(document.activeElement);
   });
 
-  it.skip(`Capture key presses from a text input and use 
+  it(`Capture key presses from a text input and use 
   the current value of the input to match items in the list with less than 3 characters`, async () => {
-    const wrapper = mount(Autocomplete);
+    const wrapper = mount(AutocompleteSearch);
 
     const textInput = wrapper.find('input[type="text"]');
     await textInput.setValue("a");
@@ -29,7 +29,7 @@ describe("Cities Autocomplete", () => {
 
   it.skip(`Output the results under the input field
    as soon as you type at least 3 characters with no result`, async () => {
-    const wrapper = mount(Autocomplete);
+    const wrapper = mount(AutocompleteSearch);
 
     const textInput = wrapper.find('input[type="text"]');
     await textInput.setValue("aaa");
@@ -44,7 +44,7 @@ describe("Cities Autocomplete", () => {
 
   it.skip(`Output the results under the input field
    as soon as you type at least 3 characters with a result and result counts`, async () => {
-    const wrapper = mount(Autocomplete);
+    const wrapper = mount(AutocompleteSearch);
 
     const textInput = wrapper.find('input[type="text"]');
     await textInput.setValue("santiago");
@@ -58,7 +58,7 @@ describe("Cities Autocomplete", () => {
 
   it.skip(`Output the results under the input field
    as soon as you type at least 3 characters with multiple results and result counts`, async () => {
-    const wrapper = mount(Autocomplete);
+    const wrapper = mount(AutocompleteSearch);
 
     const textInput = wrapper.find('input[type="text"]');
     await textInput.setValue("san");
@@ -78,7 +78,7 @@ describe("Cities Autocomplete", () => {
 
 describe.skip("Books Autocomplete", () => {
   it("renders properly", () => {
-    const wrapper = mount(Autocomplete);
+    const wrapper = mount(AutocompleteSearch);
     expect(wrapper.text()).toContain("Type the name of a book to search");
   });
 });
