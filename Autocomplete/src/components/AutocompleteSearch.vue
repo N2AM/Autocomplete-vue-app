@@ -32,8 +32,7 @@ let searchEntity = computed({
       return [];
     } else {
       notFound = false;
-
-      let entities = props.entity.filter((entity: string | Book) => {
+      let entities = props.entity?.filter((entity: string | Book) => {
         if (
           entity.title &&
           searchTerm.value.length >= 3 &&
@@ -52,6 +51,7 @@ let searchEntity = computed({
       if (
         searchTerm.value !== "" &&
         searchTerm.value.length >= 3 &&
+        entities &&
         entities[0] !== searchTerm.value
       ) {
         notFound = true;
